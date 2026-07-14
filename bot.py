@@ -36,14 +36,19 @@ def save_state(state):
 
 def send_telegram(deal):
     # Removed the inline 🛒 Buy Now text link from the bottom of the text body
-    text = f"""<b>{deal.get("name","Unknown Product")}</b>
+    text = f"""
+<blockquote><b>{deal.get("name", "Unknown Product")}</b></blockquote>
 
-💰 <b>Price:</b> ₹{deal.get("currentPrice","N/A")}
-🏷 <b>Discount:</b> {deal.get("stats",{}).get("discountPercent",0)}%
-🏷 <b>Discount:</b> {deal.get("stats",{}).get("discountPercent",0)}%
-<a href="{deal.get("mainImage")}">⭐</a> <b>Deal Score:</b> {deal.get("stats",{}).get("dealScore",0)}
-📦 <b>Platform:</b> {deal.get("platform","").title()}"""
+<blockquote>💰 <b>Price:</b> ₹{deal.get("currentPrice", "N/A")}</blockquote>
 
+<blockquote>📉 <b>Lowest in 6 Months:</b> ₹{deal.get("lowestPrice6Months", "N/A")}</blockquote>
+
+<blockquote>🏷 <b>Discount:</b> {deal.get("stats", {}).get("discountPercent", 0)}%</blockquote>
+
+<blockquote>⭐ <b>Deal Score:</b> <a href="{deal.get("mainImage")}">{deal.get("stats", {}).get("dealScore", 0)}</a></blockquote>
+
+<blockquote>📦 <b>Platform:</b> {deal.get("platform", "").title()}</blockquote>
+"""
     # Create the modern styled URL Inline Keyboard Button
     # Note: "success" tints the button green; you can change this to "primary" for blue, or "danger" for red.
     reply_markup = {
