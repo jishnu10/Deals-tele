@@ -40,7 +40,8 @@ def send_telegram(deal):
 
 💰 <b>Price:</b> ₹{deal.get("currentPrice","N/A")}
 🏷 <b>Discount:</b> {deal.get("stats",{}).get("discountPercent",0)}%
-⭐ <b>Deal Score:</b> {deal.get("stats",{}).get("dealScore",0)}
+🏷 <b>Discount:</b> {deal.get("stats",{}).get("discountPercent",0)}%
+<a href="{deal.get("mainImage")}">⭐</a> <b>Deal Score:</b> {deal.get("stats",{}).get("dealScore",0)}
 📦 <b>Platform:</b> {deal.get("platform","").title()}"""
 
     # Create the modern styled URL Inline Keyboard Button
